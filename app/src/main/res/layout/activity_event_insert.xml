@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/back"
+    android:id="@+id/eventInsertActivity"
+    tools:context=".EventInsertActivity">
+
+
+    <TextView
+        android:id="@+id/titleTVId"
+        android:text="Insert Ongoing Event"
+        android:textSize="20dp"
+        android:textColor="#0B0402"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/nameEditId"
+            android:hint="Enter Name"
+            android:textColorHint="#F8683B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/wingEditId"
+            android:hint="Enter Wing"
+            android:textColorHint="#F8683B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/dateTVId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/ic_calendar"
+        android:padding="5dp"
+        android:drawablePadding="10dp"
+        android:text="Choose a date" />
+
+    <EditText
+        android:id="@+id/detailsETId"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle"
+        android:hint="Message"
+        android:padding="5dp" />
+    <Button
+        android:id="@+id/insertBtnId"
+        android:layout_width="wrap_content"
+        android:textAllCaps="false"
+        android:text="Insert"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/back_round"
+        android:backgroundTint="#DD079386"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+
+</LinearLayout>
