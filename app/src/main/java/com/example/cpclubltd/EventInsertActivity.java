@@ -1,6 +1,8 @@
 package com.example.cpclubltd;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
@@ -20,7 +22,7 @@ public class EventInsertActivity extends AppCompatActivity {
 
     EditText nameET,wingET,detailsET;
     TextView titleTV,dateTV;
-    Button insertButton;
+    Button insertButton,  viewListButton;;
     DbHelper dbHelper;
 
     @Override
@@ -34,10 +36,20 @@ public class EventInsertActivity extends AppCompatActivity {
         titleTV=findViewById(R.id.titleTVId);
         dateTV=findViewById(R.id.dateTVId);
         insertButton=findViewById(R.id.insertBtnId);
+        viewListButton=findViewById(R.id.listBtnId);
 
 
         dbHelper= new DbHelper(EventInsertActivity.this);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+
+        viewListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new ongoing();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.ongoingFragment, fragment).commit();
+            }
+        });
 
 
         insertButton.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +72,7 @@ public class EventInsertActivity extends AppCompatActivity {
 
             }
         });
+
 
         dateTV.setOnClickListener(new View.OnClickListener() {
             @Override

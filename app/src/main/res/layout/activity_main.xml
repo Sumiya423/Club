@@ -8,7 +8,20 @@
     android:id="@+id/fragment_container"
     android:background="@drawable/back_blue"
     tools:context=".MainActivity">
-    
+
+    <FrameLayout
+        android:id="@+id/home_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_height="wrap_content">
+    </androidx.appcompat.widget.Toolbar>
+
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:layout_width="match_parent"
         android:layout_height="100dp"

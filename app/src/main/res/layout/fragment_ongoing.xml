@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/back_red"
+    android:background="@drawable/back_orange"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:id="@+id/ongoingFragment"
     tools:context="view.fragment.ongoing">
 
     <androidx.recyclerview.widget.RecyclerView

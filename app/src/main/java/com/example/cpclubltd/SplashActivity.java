@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private static int SPLASH_SCREEN = 5000;
 
     Animation topAnim, bottomAnim;
     ImageView imageView;
@@ -35,22 +36,14 @@ public class SplashActivity extends AppCompatActivity {
         cpcTV.setAnimation(bottomAnim);
         version.setAnimation(bottomAnim);
 
-        Thread thread = new Thread(){
-            public void run(){
-                try{
 
-                    sleep(5000);
-                }
-                catch(Exception e){
-
-                    e.printStackTrace();
-                }
-                finally {
-
-                    Intent intent= new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
-        };thread.start();
+        },SPLASH_SCREEN);
     }
 }

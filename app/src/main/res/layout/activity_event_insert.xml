@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="25dp"
     android:background="@drawable/back"
     android:id="@+id/eventInsertActivity"
     tools:context=".EventInsertActivity">
@@ -15,6 +16,7 @@
         android:id="@+id/titleTVId"
         android:text="Insert Ongoing Event"
         android:textSize="20dp"
+        android:fontFamily="@font/aclonica"
         android:textColor="#0B0402"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center_horizontal"
@@ -70,11 +72,27 @@
         android:id="@+id/insertBtnId"
         android:layout_width="wrap_content"
         android:textAllCaps="false"
+        android:fontFamily="@font/aclonica"
         android:text="Insert"
+        android:textColor="#fff"
         android:layout_marginTop="30dp"
-        android:background="@drawable/back_round"
-        android:backgroundTint="#DD079386"
-        android:layout_height="wrap_content">
+        android:background="@drawable/back_round2"
+        android:backgroundTint="#038074"
+        android:layout_height="40dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/listBtnId"
+        android:fontFamily="@font/aclonica"
+        android:layout_width="wrap_content"
+        android:textAllCaps="false"
+        android:text="View List"
+        android:textColor="#fff"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/back_round2"
+        android:backgroundTint="#673AB7"
+        android:layout_height="40dp">
 
     </Button>
 

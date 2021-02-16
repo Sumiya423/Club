@@ -31,7 +31,7 @@ public class OngoingListAdapter extends RecyclerView.Adapter<OngoingListAdapter.
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_ongoing,parent,true));
+        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_ongoing,parent,false));
     }
 
     @Override

@@ -1,19 +1,30 @@
 package com.example.cpclubltd;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
-import view.fragment.Applications;
+import view.fragment.CommitteeFragment;
+import view.fragment.HomeFragment;
 import view.fragment.ongoing;
 import view.fragment.upcoming;
 import view.fragment.wings;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+    private FrameLayout frameLayout;
     ChipNavigationBar chipNavigationBar;
 
     @Override
@@ -21,10 +32,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar = findViewById(R.id.home_toolbar);
+        frameLayout = findViewById(R.id.home_frame_layout);
         chipNavigationBar = findViewById(R.id.bottomNav);
         chipNavigationBar.setItemSelected(R.id.bottomNav,true);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new wings()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
         bottomMenu();
+
     }
 
     private void bottomMenu() {
@@ -37,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (i) {
                     case R.id.menu_bt_wings:
                         fragment= new wings();
-                    case R.id.menu_bt_application:
-                        fragment = new Applications();
+                        break;
+                    case R.id.menu_bt_committee:
+                        fragment = new CommitteeFragment();
                         break;
                     case R.id.menu_bt_ongoing:
                         fragment = new ongoing();
@@ -52,5 +67,51 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.top_menu_nav,menu);
+
+        if(new SharedPrefs(this).isLoggedIn()){
+            menu.getItem(2).setVisible(true);
+        } else {
+            menu.getItem(2).setVisible(false);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.menu_top_Application_dev:
+                startActivity(new Intent(MainActivity.this, ApplicationListActivity.class));
+                break;
+
+            case R.id.menu_top_Developer_app:
+                startActivity(new Intent(MainActivity.this, DeveloperActivity.class));
+
+                break;
+
+            case R.id.menu_top_logout_app:
+                new SharedPrefs(this).logout();
+                finish();
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

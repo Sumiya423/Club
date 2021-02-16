@@ -22,11 +22,11 @@
         android:iconTint="#AC2D16"
         android:icon="@drawable/ic_upcoming"/>
     <item
-        android:id="@+id/menu_bt_application"
-        android:title="Applications"
+        android:id="@+id/menu_bt_committee"
+        android:title="Committee"
         app:cnb_backgroundColor="#51FF5722"
         android:iconTint="#AC2D16"
-        android:icon="@drawable/ic_application"/>
+        android:icon="@drawable/ic_committee"/>
 
 
 </menu>

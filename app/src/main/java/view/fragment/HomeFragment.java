@@ -10,13 +10,23 @@ import android.view.ViewGroup;
 
 import com.example.cpclubltd.R;
 
+public class HomeFragment extends Fragment {
 
-public class Applications extends Fragment {
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_applications, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }

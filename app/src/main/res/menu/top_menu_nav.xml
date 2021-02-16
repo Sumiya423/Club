@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_top_details_dev"
-        android:title="Developers Details"
-        android:iconTint="@android:color/white"
-        />
-    <item
-        android:id="@+id/menu_top_about_app"
-        android:title="About SSB"
+        android:id="@+id/menu_top_Application_dev"
+        android:title="Application"
         />
 
     <item
-        android:id="@+id/menu_top_logout"
-        android:title="Logout"/>
+        android:id="@+id/menu_top_Developer_app"
+        android:title="Developer"
+        />
+
+    <item
+        android:id="@+id/menu_top_logout_app"
+        android:title="Logout"
+        />
+
 
 </menu>

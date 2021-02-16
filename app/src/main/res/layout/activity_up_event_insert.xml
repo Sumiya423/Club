@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="25dp"
+    android:background="@drawable/back_ash"
+    android:id="@+id/upEventInsertActivity"
+    tools:context=".UpEventInsertActivity">
+
+
+    <TextView
+        android:id="@+id/up_titleTVId"
+        android:text="Insert Upcoming Event"
+        android:textSize="20dp"
+        android:fontFamily="@font/aclonica"
+        android:textColor="#0B0402"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/up_nameEditId"
+            android:hint="Enter Name"
+            android:textColorHint="#F8683B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/up_wingEditId"
+            android:hint="Enter Wing"
+            android:textColorHint="#F8683B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/up_dateTVId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableLeft="@drawable/ic_calendar"
+        android:padding="5dp"
+        android:drawablePadding="10dp"
+        android:text="Choose a date" />
+
+    <EditText
+        android:id="@+id/up_detailsETId"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle"
+        android:hint="Message"
+        android:padding="5dp" />
+    <Button
+        android:id="@+id/up_insertBtnId"
+        android:layout_width="wrap_content"
+        android:textAllCaps="false"
+        android:fontFamily="@font/aclonica"
+        android:text="Insert"
+        android:textColor="#fff"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/back_round2"
+        android:backgroundTint="#038074"
+        android:layout_height="40dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/up_listBtnId"
+        android:fontFamily="@font/aclonica"
+        android:layout_width="wrap_content"
+        android:textAllCaps="false"
+        android:text="View List"
+        android:textColor="#fff"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/back_round2"
+        android:backgroundTint="#673AB7"
+        android:layout_height="40dp">
+
+    </Button>
+
+
+</LinearLayout>

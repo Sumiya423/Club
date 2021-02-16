@@ -67,6 +67,7 @@ public class ongoing extends Fragment {
            }
        });
 
+
        loadData();
 
        return view;
@@ -77,7 +78,7 @@ public class ongoing extends Fragment {
         Cursor cursor= dbHelper.show();
 
         if(cursor.getCount()==0){
-            Toast.makeText(getContext(), "No Data Fount", LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "No Data Found", LENGTH_SHORT).show();
         }
         else{
             while(cursor.moveToNext()){

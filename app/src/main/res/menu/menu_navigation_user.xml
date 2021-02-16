@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_bt_wings_user"
+        android:title="Wings"
+        app:cnb_backgroundColor="#51FF5722"
+        android:iconTint="#AC2D16"
+        android:icon="@drawable/ic_wing"
+        />
+    <item
+        android:id="@+id/menu_bt_ongoing_user"
+        android:title="Ongoing Events"
+        app:cnb_backgroundColor="#51FF5722"
+        android:iconTint="#AC2D16"
+        android:icon="@drawable/ic_ongoing"/>
+    <item
+        android:id="@+id/menu_bt_upcoming_user"
+        android:title="Upcoming Events"
+        app:cnb_backgroundColor="#51FF5722"
+        android:iconTint="#AC2D16"
+        android:icon="@drawable/ic_upcoming"/>
+    <item
+        android:id="@+id/menu_bt_committee_user"
+        android:title="Committee"
+        app:cnb_backgroundColor="#51FF5722"
+        android:iconTint="#AC2D16"
+        android:icon="@drawable/ic_committee"/>
+
+
+</menu>
