@@ -1,5 +1,6 @@
 package com.example.cpclubltd;
 
+import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "cpc.bd";
     private static final String TABLE_NAME_ONGOING_EVENT = "table_ongoing_event";
     private static final String TABLE_NAME_UPCOMING_EVENT = "table_upcoming_event";
+    private static final String TABLE_NAME_APPLICATION = "table_application";
 
 
     private static final String COLUMN_ONGOING_EVENT_ID = "event_id";
@@ -30,12 +32,20 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String COLUMN_UPCOMING_EVENT_WING = "up_wing";
     private static final String COLUMN_UPCOMING_EVENT_DETAILS = "up_details";
 
+    private static final String COLUMN_STUDENT_ID = "stu_id";
+    private static final String COLUMN_STUDENT_NAME = "stu_name";
+    private static final String COLUMN_EVENT_ID = "eve_id";
+    private static final String COLUMN_STUDENT_EMAIL = "stu_email";
+    private static final String COLUMN_STUDENT_DETAILS = "stu_details";
+
     public static final String displayOngoingTable = " SELECT * FROM "+ TABLE_NAME_ONGOING_EVENT;
 
     public static final String displayUpcomingTable = " SELECT * FROM "+ TABLE_NAME_UPCOMING_EVENT;
 
+    public static final String displayApplicationTable = " SELECT * FROM "+ TABLE_NAME_APPLICATION;
 
-    private static final int VERSION =2;
+
+    private static final int VERSION =4;
     private static final String QUERY_CREATE_ONGOING_EVENT_TABLE = "CREATE TABLE "
             + TABLE_NAME_ONGOING_EVENT
             + "(" + COLUMN_ONGOING_EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -43,6 +53,15 @@ public class DbHelper extends SQLiteOpenHelper {
             + COLUMN_ONGOING_EVENT_WING + " TEXT, "
             + COLUMN_ONGOING_EVENT_DATE+ " TEXT, "
             + COLUMN_ONGOING_EVENT_DETAILS + " TEXT "
+            + ");";
+
+    private static final String QUERY_CREATE_APPLICATION_TABLE = "CREATE TABLE "
+            + TABLE_NAME_APPLICATION
+            + "(" + COLUMN_STUDENT_ID+ " TEXT, "
+            + COLUMN_STUDENT_NAME + " TEXT, "
+            + COLUMN_EVENT_ID + " TEXT, "
+            + COLUMN_STUDENT_EMAIL+ " TEXT, "
+            + COLUMN_STUDENT_DETAILS+ " TEXT "
             + ");";
 
     private static final String QUERY_CREATE_UPCOMING_EVENT_TABLE = "CREATE TABLE "
@@ -63,6 +82,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(QUERY_CREATE_ONGOING_EVENT_TABLE);
         sqLiteDatabase.execSQL(QUERY_CREATE_UPCOMING_EVENT_TABLE);
+        sqLiteDatabase.execSQL(QUERY_CREATE_APPLICATION_TABLE);
 
     }
 
@@ -72,16 +92,42 @@ public class DbHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
     public Cursor showUp(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor= sqLiteDatabase.rawQuery(displayUpcomingTable,null);
 
         return cursor;
     }
+
+    public Cursor showApp(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor= sqLiteDatabase.rawQuery(displayApplicationTable,null);
+
+        return cursor;
+    }
+
+    public int deleteOngoing(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        int value = sqLiteDatabase.delete(TABLE_NAME_ONGOING_EVENT,COLUMN_ONGOING_EVENT_ID+"=?",new String[]{id});
+        return value;
+    }
+    public int deleteUpcoming(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        int value = sqLiteDatabase.delete(TABLE_NAME_UPCOMING_EVENT,COLUMN_UPCOMING_EVENT_ID+"=?",new String[]{id});
+        return value;
+    }
+    public int deleteApplication(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        int value = sqLiteDatabase.delete(TABLE_NAME_APPLICATION,COLUMN_STUDENT_ID+"=?",new String[]{id});
+        return value;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ONGOING_EVENT);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_UPCOMING_EVENT);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_APPLICATION);
         onCreate(sqLiteDatabase);
     }
 
@@ -129,6 +175,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return ongoingList;
     }
 
+
     public long insertUpcomingInfo(UpcomingInfo upcomingInfo) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -170,6 +217,50 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
 
         return upcomingList;
+    }
+
+    public long insertApplication(ApplInfo applicationInfo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(COLUMN_STUDENT_ID, applicationInfo.getsId());
+        contentValues.put(COLUMN_STUDENT_NAME, applicationInfo.getsName());
+        contentValues.put(COLUMN_EVENT_ID, applicationInfo.getEvID());
+        contentValues.put(COLUMN_STUDENT_EMAIL, applicationInfo.getsEmail());
+        contentValues.put(COLUMN_STUDENT_DETAILS, applicationInfo.getsDetails());
+
+
+        long value = db.insert(TABLE_NAME_APPLICATION, null, contentValues);
+
+        db.close();
+
+        return value;
+    }
+
+    public List<ApplInfo> getApplicationList() {
+        List<ApplInfo> appList = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE_NAME_APPLICATION + ";";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ApplInfo applicationModel = new ApplInfo();
+                applicationModel.setsId(cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_ID)));
+                applicationModel.setsName(cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_NAME)));
+                applicationModel.setEvID(cursor.getString(cursor.getColumnIndex(COLUMN_EVENT_ID)));
+                applicationModel.setsEmail(cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_DETAILS)));
+                applicationModel.setsDetails(cursor.getString(cursor.getColumnIndex(COLUMN_STUDENT_DETAILS)));
+
+                appList.add(applicationModel);
+            } while (cursor.moveToNext());
+        }
+
+        db.close();
+
+        return appList;
     }
 
 

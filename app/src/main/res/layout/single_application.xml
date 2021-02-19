@@ -17,22 +17,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="5dp"
-            android:background="#9CF46D63"
+            android:background="#E8ABF3"
             android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#32F64D85"
                 android:orientation="vertical"
+                android:background="#D0AED6"
                 android:layout_marginLeft="5dp"
                 android:layout_gravity="center_vertical">
                 <TextView
-                    android:id="@+id/single_event_name"
+                    android:id="@+id/single_stu_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Androind Hackathon"
+                    android:text="Student Name"
                     android:layout_marginTop="2dp"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
@@ -40,23 +40,24 @@
                     />
 
                 <TextView
-                    android:id="@+id/single_date"
+                    android:id="@+id/single_stu_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="1dp"
-                    android:textSize="14sp"
-                    android:text="Date: "
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:text="Student Id"
                     />
 
                 <TextView
-                    android:id="@+id/single_wing"
+                    android:id="@+id/single_ev_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="From Development Wing"
+                    android:text="Event Id"
                     android:textSize="12sp"
-                    android:background="@drawable/back_round"
-                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"

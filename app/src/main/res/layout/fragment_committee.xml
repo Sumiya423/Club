@@ -23,7 +23,7 @@
                 android:gravity="center"
                 android:fontFamily="@font/aclonica"
                 android:textSize="30sp"
-                android:textColor="#E1EA8C"
+                android:textColor="#C0A1F8"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -88,7 +88,7 @@
                         android:textAlignment="center"
                         android:text="Name of convener"
                         android:layout_gravity="center"
-                        android:textColor="#ADF1FA"
+                        android:textColor="#9C27B0"
                         android:textSize="12dp"
                         android:fontFamily="@font/aclonica"
                         android:layout_width="wrap_content"

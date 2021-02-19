@@ -5,9 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,15 +20,19 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import view.fragment.CommitteeFragment;
 import view.fragment.HomeFragment;
 import view.fragment.UserOngoingFragment;
+import view.fragment.UserUpcomingFragment;
 import view.fragment.ongoing;
 import view.fragment.upcoming;
 import view.fragment.wings;
 
 public class MainActivityUser extends AppCompatActivity {
 
+    private static final String TAG =MainActivityUser.class.getSimpleName() ;
     private Toolbar toolbar;
     private FrameLayout user_frameLayout;
-    ChipNavigationBar chipNavigationBar;
+    ChipNavigationBar chipNavigationBarUser;
+
+    FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,36 +40,45 @@ public class MainActivityUser extends AppCompatActivity {
         setContentView(R.layout.activity_main_user);
 
         toolbar = findViewById(R.id.user_home_toolbar);
-        user_frameLayout = findViewById(R.id.user_home_frame_layout);
-        chipNavigationBar = findViewById(R.id.user_bottomNav);
-        chipNavigationBar.setItemSelected(R.id.user_bottomNav,true);
+        chipNavigationBarUser = findViewById(R.id.user_bottomNav);
+        chipNavigationBarUser.setItemSelected(R.id.user_bottomNav,true);
         getSupportFragmentManager().beginTransaction().replace(R.id.user_fragment_container,new HomeFragment()).commit();
-        bottomMenu();
+        bottomMenuUser();
 
     }
 
-    private void bottomMenu() {
+    private void bottomMenuUser() {
 
 
-        chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+        chipNavigationBarUser.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {
-                Fragment fragment = null;
+                Fragment fragment1=null;
                 switch (i) {
                     case R.id.menu_bt_wings_user:
-                        fragment= new wings();
+                        fragment1= new wings();
+                        setTitle("CPC Wings");
                         break;
                     case R.id.menu_bt_committee_user:
-                        fragment = new CommitteeFragment();
+                        fragment1 = new CommitteeFragment();
+                        setTitle("CPC Committee");
                         break;
-                    case R.id.menu_bt_ongoing:
-                        fragment = new UserOngoingFragment();
+                    case R.id.menu_bt_ongoing_user:
+                        fragment1 = new UserOngoingFragment();
+                        setTitle("CPC Ongoing Events");
                         break;
-                    case R.id.menu_bt_upcoming:
-                        fragment = new upcoming();
+                    case R.id.menu_bt_upcoming_user:
+                        fragment1 = new UserUpcomingFragment();
+                        setTitle("CPC Upcoming Events");
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.user_fragment_container,fragment).commit();
+                if(fragment1!=null){
+                    fragmentManager= getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.user_fragment_container,fragment1).commit();
+                }
+                else {
+                    Log.e(TAG,"Error in Creating Fragment");
+                }
             }
         });
 
@@ -85,21 +100,13 @@ public class MainActivityUser extends AppCompatActivity {
 
             case R.id.menu_top_Developer:
                 startActivity(new Intent(MainActivityUser.this, DeveloperActivity.class));
-
                 break;
 
             case R.id.menu_top_CPC:
-                new SharedPrefs(this).logout();
-                finish();
-                Intent intent = new Intent(MainActivityUser.this,LoginActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivityUser.this, AboutAppActivity.class));
                 break;
         }
         return true;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }

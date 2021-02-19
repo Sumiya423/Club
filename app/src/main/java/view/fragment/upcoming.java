@@ -1,10 +1,12 @@
 package view.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,7 +69,50 @@ public class upcoming extends Fragment {
         });
 
         up_loadData();
+
+        upcomingListAdapter.setOnItemClick(new UpcomingListAdapter.OnItemClick() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+
+            @Override
+            public void onLongItemClick(final int position) {
+
+                AlertDialog.Builder builder= new AlertDialog.Builder(getContext());
+                builder.setTitle("Delete").setMessage("Do you want to delete?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                deleteUpData(position);
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).create().show();
+            }
+
+
+        });
         return view;
+    }
+
+    private  void deleteUpData(int positiion){
+        String id = upcomingList.get(positiion).getUp_id();
+
+        int value= dbHelper.deleteUpcoming(id);
+        if(value>0){
+            Toast.makeText(getContext(), "Deleted Successfully !", LENGTH_SHORT).show();
+
+            upcomingList.remove(positiion);
+            upcomingListAdapter.notifyItemRemoved(positiion);
+        }
+        else{
+            Toast.makeText(getContext(), "Delete Failed!", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private void up_loadData(){

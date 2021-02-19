@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/back_orange"
+    android:background="@drawable/back_pink2"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:id="@+id/userOngoingFragment"
@@ -14,7 +14,7 @@
         android:id="@+id/user_ongoing_recylerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/single_ongoing">
+        tools:listitem="@layout/user_single_ongoing">
 
     </androidx.recyclerview.widget.RecyclerView>
 

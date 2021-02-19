@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="25dp"
-    android:background="@drawable/back"
+    android:padding="40dp"
+    android:background="@drawable/back_ash"
     android:id="@+id/eventInsertActivity"
     tools:context=".EventInsertActivity">
 
@@ -17,7 +17,7 @@
         android:text="Insert Ongoing Event"
         android:textSize="20dp"
         android:fontFamily="@font/aclonica"
-        android:textColor="#0B0402"
+        android:textColor="#FFFBFB"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"

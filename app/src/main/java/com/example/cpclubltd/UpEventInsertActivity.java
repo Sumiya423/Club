@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import view.fragment.ongoing;
+import view.fragment.upcoming;
 
 public class UpEventInsertActivity extends AppCompatActivity {
 
@@ -42,9 +43,9 @@ public class UpEventInsertActivity extends AppCompatActivity {
         up_viewListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = new ongoing();
+                Fragment fragment = new upcoming();
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.upcomingFragment, fragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.upEventInsertActivity, fragment).commit();
             }
         });
 

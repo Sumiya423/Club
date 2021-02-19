@@ -17,18 +17,18 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="5dp"
-            android:background="#9CF46D63"
+            android:background="#A8B3F4"
             android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#32F64D85"
+                android:background="#8157DFF1"
                 android:orientation="vertical"
                 android:layout_marginLeft="5dp"
                 android:layout_gravity="center_vertical">
                 <TextView
-                    android:id="@+id/single_event_name"
+                    android:id="@+id/single_up_event_name_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -40,7 +40,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/single_date"
+                    android:id="@+id/single_up_date_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -50,7 +50,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/single_wing"
+                    android:id="@+id/single_up_wing_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="From Development Wing"
@@ -64,7 +64,7 @@
                     android:paddingRight="5dp"
                     android:paddingTop="1dp"
                     android:paddingBottom="1dp"
-                    android:backgroundTint="#0E2B37"
+                    android:backgroundTint="@color/colorPrimary"
                     />
 
             </LinearLayout>

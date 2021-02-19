@@ -1,11 +1,13 @@
 package view.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,6 +48,8 @@ public class ongoing extends Fragment {
                              Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.fragment_ongoing, container, false);
 
+
+
        recyclerView = view.findViewById(R.id.ongoing_recylerview);
        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
        recyclerView.setHasFixedSize(true);
@@ -70,9 +74,52 @@ public class ongoing extends Fragment {
 
        loadData();
 
+       ongoingListAdapter.setOnItemClick(new OngoingListAdapter.OnItemClick() {
+           @Override
+           public void onItemClick(int position) {
+
+           }
+
+           @Override
+           public void onLongItemClick(final int position) {
+               AlertDialog.Builder builder= new AlertDialog.Builder(getContext());
+               builder.setTitle("Delete").setMessage("Do you want to delete?")
+                       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+                       deleteData(position);
+                   }
+               }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int i) {
+
+                   }
+               }).create().show();
+
+           }
+       });
+
        return view;
 
     }
+
+    private  void deleteData(int positiion){
+        String id = ongoingList.get(positiion).getId();
+
+        int value= dbHelper.deleteOngoing(id);
+        if(value>0){
+            Toast.makeText(getContext(), "Deleted Successfully !", LENGTH_SHORT).show();
+
+            ongoingList.remove(positiion);
+            ongoingListAdapter.notifyItemRemoved(positiion);
+        }
+        else{
+            Toast.makeText(getContext(), "Delete Failed!", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+
     private void loadData(){
         ongoingList = new ArrayList<>();
         Cursor cursor= dbHelper.show();

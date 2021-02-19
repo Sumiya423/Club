@@ -38,9 +38,9 @@ public class OngoingListAdapter extends RecyclerView.Adapter<OngoingListAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         OngoingInfo model = ongoingInfo.get(position);
-        holder.tvName.setText(model.getName());
-        holder.tvDate.setText(model.getDate());
-        holder.tvWing.setText(model.getWing());
+        holder.tvName.setText("Event Name :  "+model.getName());
+        holder.tvDate.setText("Event closing date :  "+model.getDate());
+        holder.tvWing.setText("Organized  by :  "+model.getWing()+" Wing");
     }
 
     @Override

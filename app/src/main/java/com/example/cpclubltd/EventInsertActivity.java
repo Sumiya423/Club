@@ -47,7 +47,7 @@ public class EventInsertActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Fragment fragment = new ongoing();
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.ongoingFragment, fragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.eventInsertActivity, fragment).commit();
             }
         });
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="25dp"
+    android:padding="40dp"
     android:background="@drawable/back_ash"
     android:id="@+id/upEventInsertActivity"
     tools:context=".UpEventInsertActivity">

@@ -28,7 +28,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_gravity="center_vertical">
                 <TextView
-                    android:id="@+id/single_event_name"
+                    android:id="@+id/single_event_name_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -40,7 +40,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/single_date"
+                    android:id="@+id/single_date_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -50,7 +50,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/single_wing"
+                    android:id="@+id/single_wing_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="From Development Wing"

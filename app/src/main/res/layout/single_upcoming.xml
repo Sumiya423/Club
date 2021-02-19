@@ -17,13 +17,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="5dp"
-            android:background="#8E54F6"
+            android:background="#A8B3F4"
             android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/back_ash"
+                android:background="#8157DFF1"
                 android:orientation="vertical"
                 android:layout_marginLeft="5dp"
                 android:layout_gravity="center_vertical">

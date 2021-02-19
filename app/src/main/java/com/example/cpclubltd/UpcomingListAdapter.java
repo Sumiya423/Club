@@ -34,9 +34,9 @@ public class UpcomingListAdapter extends RecyclerView.Adapter<UpcomingListAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         UpcomingInfo up_model = upcomingInfo.get(position);
-        holder.tvUpName.setText(up_model.getUp_name());
-        holder.tvUpDate.setText(up_model.getUp_date());
-        holder.tvUpWing.setText(up_model.getUp_wing());
+        holder.tvUpName.setText("Event Name :  "+up_model.getUp_name());
+        holder.tvUpDate.setText("Registration closing date :  "+up_model.getUp_date());
+        holder.tvUpWing.setText("Organized  by :  "+up_model.getUp_wing()+" Wing");
     }
 
     @Override

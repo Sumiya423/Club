@@ -17,7 +17,6 @@ import com.example.cpclubltd.DbHelper;
 import com.example.cpclubltd.OngoingInfo;
 import com.example.cpclubltd.OngoingListAdapter;
 import com.example.cpclubltd.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,6 @@ public class UserOngoingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -50,7 +48,7 @@ public class UserOngoingFragment extends Fragment {
 
         dbHelper = new DbHelper(getContext());
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        user_ongoingList=dbHelper.getOngoingList();
+        user_ongoingList= dbHelper.getOngoingList();
 
         user_ongoingListAdapter = new OngoingListAdapter(user_ongoingList);
         user_recyclerView.setAdapter(user_ongoingListAdapter);
